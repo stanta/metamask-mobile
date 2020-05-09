@@ -37,6 +37,7 @@ import Identicon from '../../../UI/Identicon';
 import Analytics from '../../../../core/Analytics';
 import { ANALYTICS_EVENT_OPTS } from '../../../../util/analytics';
 import TransactionHeader from '../../../UI/TransactionHeader';
+import AccountInfoCard from '../../../UI/AccountInfoCard';
 
 const styles = StyleSheet.create({
 	wrapper: {
@@ -780,6 +781,7 @@ class Approve extends PureComponent {
 									{strings('spend_limit_edition.edit_permission')}
 								</Text>
 							</TouchableOpacity>
+							<AccountInfoCard />
 						</View>
 						<View style={styles.section}>
 							<View style={styles.sectionTitleRow}>
