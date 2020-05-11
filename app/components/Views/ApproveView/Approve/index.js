@@ -400,7 +400,7 @@ class Approve extends PureComponent {
 		});
 	};
 
-	onViewDetails = () => {
+	toggleViewDetails = () => {
 		const { viewDetails } = this.state;
 		Analytics.trackEvent(ANALYTICS_EVENT_OPTS.DAPP_APPROVE_SCREEN_VIEW_DETAILS);
 		this.setState({ viewDetails: !viewDetails });
@@ -544,6 +544,9 @@ class Approve extends PureComponent {
 				: 0;
 		return (
 			<View style={styles.section}>
+				<TouchableOpacity onPress={this.toggleEditPermission}>
+					<Text>Back</Text>
+				</TouchableOpacity>
 				<View style={styles.customGasModalTitle}>
 					<Text style={styles.customGasModalTitleText}>{strings('spend_limit_edition.title')}</Text>
 				</View>
@@ -767,6 +770,9 @@ class Approve extends PureComponent {
 						{viewDetails ? (
 							<>
 								<View style={styles.section}>
+									<TouchableOpacity onPress={this.toggleViewDetails}>
+										<Text>Back</Text>
+									</TouchableOpacity>
 									<View style={styles.sectionTitleRow}>
 										<FontAwesome5
 											name={'user-check'}
@@ -874,7 +880,7 @@ class Approve extends PureComponent {
 											<Text style={styles.feeText}>{`${totalGas} ${ticker}`}</Text>
 										</View>
 									</View>
-									<TouchableOpacity style={styles.actionTouchable} onPress={this.onViewDetails}>
+									<TouchableOpacity style={styles.actionTouchable} onPress={this.toggleViewDetails}>
 										<View style={styles.viewDetailsWrapper}>
 											<Text style={styles.viewDetailsText}>
 												{strings('spend_limit_edition.view_details')}
