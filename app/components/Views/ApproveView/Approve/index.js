@@ -107,7 +107,8 @@ const styles = StyleSheet.create({
 		color: colors.blue,
 		fontSize: 12,
 		lineHeight: 16,
-		marginTop: 16,
+		marginTop: 28,
+		marginBottom: 10,
 		textAlign: 'center'
 	},
 	actionTouchable: {
