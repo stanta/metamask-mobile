@@ -36,8 +36,22 @@ import Analytics from '../../../../core/Analytics';
 import { ANALYTICS_EVENT_OPTS } from '../../../../util/analytics';
 import TransactionHeader from '../../../UI/TransactionHeader';
 import AccountInfoCard from '../../../UI/AccountInfoCard';
+import StyledButton from '../../../UI/StyledButton';
 
 const styles = StyleSheet.create({
+	button: {
+		flex: 1
+	},
+	cancel: {
+		marginRight: 8
+	},
+	confirm: {
+		marginLeft: 8
+	},
+	actionContainer: {
+		flexDirection: 'row',
+		marginVertical: 20
+	},
 	networkFee: {
 		flexDirection: 'row',
 		justifyContent: 'space-between',
@@ -88,13 +102,14 @@ const styles = StyleSheet.create({
 		paddingVertical: 8,
 		paddingHorizontal: 16
 	},
-	// viewDetailsText: {
-	// 	...fontStyles.normal,
-	// 	color: colors.blue,
-	// 	fontSize: 12,
-	// 	lineHeight: 16,
-	// 	textAlign: 'center'
-	// },
+	viewDetailsText: {
+		...fontStyles.normal,
+		color: colors.blue,
+		fontSize: 12,
+		lineHeight: 16,
+		marginTop: 16,
+		textAlign: 'center'
+	},
 	actionTouchable: {
 		flexDirection: 'column',
 		alignItems: 'center'
@@ -851,14 +866,7 @@ class Approve extends PureComponent {
 											>{`${totalGasFiat} ${currentCurrency}`}</Text>
 											<Text style={styles.feeText}>{`${totalGas} ${ticker}`}</Text>
 										</View>
-									</View>
-									<TouchableOpacity style={styles.actionTouchable} onPress={this.toggleViewDetails}>
-										<View style={styles.viewDetailsWrapper}>
-											<Text style={styles.viewDetailsText}>
-												{strings('spend_limit_edition.view_details')}
-											</Text>
-										</View>
-									</TouchableOpacity>*/}
+									</View>*/}
 									<TouchableOpacity onPress={this.toggleCustomGasModal}>
 										<View style={styles.networkFee}>
 											<Text style={styles.sectionRight}>
@@ -870,11 +878,34 @@ class Approve extends PureComponent {
 											</View>
 										</View>
 									</TouchableOpacity>
+									<TouchableOpacity style={styles.actionTouchable} onPress={this.toggleViewDetails}>
+										<View style={styles.viewDetailsWrapper}>
+											<Text style={styles.viewDetailsText}>
+												{strings('spend_limit_edition.view_details')}
+											</Text>
+										</View>
+									</TouchableOpacity>
 									{gasError && (
 										<View style={styles.errorMessageWrapper}>
 											<ErrorMessage errorMessage={gasError} />
 										</View>
 									)}
+									<View style={styles.actionContainer}>
+										<StyledButton
+											type="cancel"
+											// onPress={onCancelPress}
+											containerStyle={[styles.button, styles.cancel]}
+										>
+											Cancel
+										</StyledButton>
+										<StyledButton
+											type="blue"
+											// onPress={onConfirmPress}
+											containerStyle={[styles.button, styles.confirm]}
+										>
+											Approve
+										</StyledButton>
+									</View>
 								</View>
 							</>
 						)}
